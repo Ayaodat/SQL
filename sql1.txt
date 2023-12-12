@@ -1,0 +1,55 @@
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(30),
+    LastName VARCHAR(30),
+    Email VARCHAR(80)
+  
+);
+
+INSERT INTO Customers (CustomerID, FirstName, LastName, Email)
+VALUES
+    (0, 'aya', 'odat', 'aya.odat@gmail.com'),
+    (1, 'hamzeh', 'odat', 'hamzehodatt@gmail.com'),
+    (2, 'ali', 'manaseer', 'alimohmana@gmail.com'),
+    (3, 'hala', 'majali', 'hmajali@gmail.com')
+
+CREATE TABLE Orders (
+	OrderID INT PRIMARY KEY,
+	CustomerID INT,
+	OrderDate DATE,
+	TotalAmount DECIMAL(10, 2),
+	FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+INSERT INTO Orders (OrderID, CustomerID, OrderDate, TotalAmount)
+VALUES
+    (00, 0, '2023-09-24', 150.00),
+    (01, 1, '2023-08-07', 200.50),
+    (02, 2, '2023-10-06', 75.75),
+    (03, 3, '2023-06-25', 300.25);
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, Price)
+VALUES
+    (000,100.00),
+    (001,300.00),
+    (002,170.00),
+    (003,250.00);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    
+);
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName)
+VALUES
+    (222, 'ahmad', 'otoum'),
+    (223, 'sali', 'atiyat'),
+    (224, 'malik', 'qaoud'),
+    (225, 'ali', 'olaimat');
