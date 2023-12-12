@@ -1,0 +1,43 @@
+
+CREATE TABLE Manager (
+    manager_id INT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE Employee (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    birthdate DATE,
+    phone_number VARCHAR(20),
+    national_id VARCHAR(20),
+    nationality VARCHAR(50),
+    marital_status VARCHAR(20),
+    photo_url VARCHAR(250),
+    entry_date DATE,
+    password VARCHAR(250),
+    department VARCHAR(50),
+    manager_id INT,
+    FOREIGN KEY (manager_id) REFERENCES Manager(manager_id)
+);
+
+
+CREATE TABLE Task (
+    task_id INT PRIMARY KEY,
+    title VARCHAR(250) NOT NULL,
+    start_date DATE,
+    due_date DATE,
+    description TEXT,
+    importance_level INT,
+    employee_id INT,
+    FOREIGN KEY (employee_id) REFERENCES Employee(employee_id)
+);
+
+
+CREATE TABLE Feedback (
+    feedback_id INT PRIMARY KEY,
+    sender_name VARCHAR(250) NOT NULL,
+    sender_email VARCHAR(25) NOT NULL,
+    message TEXT
+);
